@@ -10,8 +10,8 @@ This project intends to provide a script to be executed by an Admin that has ful
 
 # Prerequisites
 This project depends on the "uv" utility to be installed on the machine where it's going to be executed.  
-[Install instructions for Windows](https://docs.astral.sh/uv/getting-started/installation/#__tabbed_1_2)  
-[Install instructions for Linux and MacOs](https://docs.astral.sh/uv/getting-started/installation/#__tabbed_1_1)
+["uv" install instructions for Windows](https://docs.astral.sh/uv/getting-started/installation/#__tabbed_1_2)  
+["uv" install instructions for Linux and MacOs](https://docs.astral.sh/uv/getting-started/installation/#__tabbed_1_1)
 
 The user running the tool will need to have Contributor access on all workspaces.
 
