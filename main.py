@@ -13,37 +13,6 @@ logger = logging.getLogger(
 logger.disabled = True
 
 
-# def get_workspace_list(subscription_id: str, auth: InteractiveLoginAuthentication) -> dict[str, str]:
-#    """
-#    Retrieve all Azure Machine Learning workspaces within a given subscription.
-#
-#    This function connects to Azure using the provided authentication and lists all
-#    available ML workspaces in the specified subscription. It returns a mapping of
-#    workspace names to their corresponding resource group names.
-#
-#    Args:
-#        subscription_id (str): The Azure subscription ID to scan for workspaces
-#        auth (InteractiveLoginAuthentication): Azure authentication object with proper credentials
-#
-#    Returns:
-#        dict[str, str]: Dictionary mapping workspace names to resource group names.
-#                       Returns empty dict if no workspaces found or on error.
-#
-#    Raises:
-#        Catches all exceptions internally and prints error messages to console.
-#    """
-#    ws_list = {}
-#    try:
-#        print(f"♻️ Retrieving workspaces for subscription {subscription_id}")
-#        ws_list = Workspace.list(subscription_id=subscription_id, auth=auth)
-#        for workspace_name, workspace in ws_list.items():
-#            ws_list[workspace_name] = workspace[0].resource_group
-#    except Exception as e:
-#        print(
-#            f"🚫Error retrieving workspaces for subscription {subscription_id}: {e}")
-#    return ws_list
-
-
 def check_linked_services_usage(ws: Workspace):
     """
     Check if the Azure ML workspace is using linked services (deprecated feature).
@@ -229,7 +198,6 @@ def get_project_details(sub_id: str, rg: str, workspace: str, ws_region: str, to
     try:
         with urllib.request.urlopen(request) as response:
             response = json.loads(response.read().decode())
-            # print(response)
 
     except Exception as e:
         print(f"Error fetching project details: {e}")
@@ -284,7 +252,7 @@ def check_v2_dataset_usage(sub_id: str, rg: str, workspace: str, ws_region: str,
             print(f"\t❌ Project {project['name']} is using a v2 data asset")
             return
 
-    print(f"\t✅ No v2 dataset usage found for labeling projects")
+    print("\t✅ No v2 dataset usage found for labeling projects")
 
     return
 
@@ -299,7 +267,6 @@ def get_workspace_list(subscription_id: str, token: str) -> list[dict]:
     Returns:
         list[dict]: List of valid workspaces in the specified subscription.
     """
-    workspace_list = []
 
     url = "https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2024-04-01"
 
@@ -382,11 +349,6 @@ def main():
         workspaces = get_workspace_list(subscription_id, token)
         print(
             f"Workspaces for subscription {subscription_id}: {[workspace['name'] for workspace in workspaces]}")
-
-        # for workspace_name, resource_group in workspaces.items():
-        #    try:
-        #        ws = Workspace(subscription_id=subscription_id,
-        #                       resource_group=resource_group, workspace_name=workspace_name, auth=auth)
 
         for workspace in workspaces:
             try:
