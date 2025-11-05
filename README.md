@@ -63,10 +63,10 @@ resources
 ![Screenshot of Azure Resource Graph Explorer query editor. The query shown selects resources where type equals "microsoft.machinelearningservices/workspaces" and kind equals "Default", then returns distinct subscriptionId. A blue Run button is highlighted in the top left, next to Save and Share options.](/images/execute_query.png)
 
 # How to interpret the results:
-♻️ - Will be shown to indicate an operation is ongoing.
-🟢 - Will be shown uppon sucessful connection to a workspace.
-🚫 - Will be shown when it is not possible to connect to a workspace or to complete the assessment for the usage of a given feature.
-❌ - Will be shown when a deprecated feature is in use.
-✅ - Will be shown when it was detected that a deprecated feature is not being used.
+♻️ - Will be shown to indicate an operation is ongoing.  
+🟢 - Will be shown uppon sucessful connection to a workspace.  
+🚫 - Will be shown when it is not possible to connect to a workspace or to complete the assessment for the usage of a given feature.  
+❌ - Will be shown when a deprecated feature is in use.  
+✅ - Will be shown when it was detected that a deprecated feature is not being used.  
 
 
